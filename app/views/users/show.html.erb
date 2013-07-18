@@ -1,0 +1,12 @@
+<h2>user show page</h2>
+<%= @user.name %>
+
+<br><br>
+<h4><%= @user.name %>'s teams</h4>
+
+<ul>
+<% @user.teams.each do |team| %>
+
+<li><%= link_to team.name, team_url(team.id) %></li>
+<% end %>
+</ul>

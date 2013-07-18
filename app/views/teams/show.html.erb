@@ -1,0 +1,37 @@
+<h2>Team name: <%= @team.name %></h2>
+
+Projects:
+
+<% @projects.each do |project| %>
+
+<ul>
+  <li>Project name: <%= project.title %></li>
+  
+  Project description: <%= project.description %>
+  
+    <% project.items.each do |item| %>
+    <ul>
+    <li>Item title: <%= item.title %></li>
+    <ul>
+    <li>Item description: <%= item.description %></li>
+    <li>Item status: <%= item.completed ? "Complete" : "Incomplete" %></li>
+    </ul>
+    </ul>
+    <% end %>
+  
+</ul>
+
+<% end %>
+
+<%= link_to "Add A New Project", new_team_project_url(@team.id) %>
+
+<br><br>
+
+Team Members: 
+<ul>
+<% @team.users.each do |member| %>
+  <li><%= link_to member.name, user_url(member.id) %></li>
+
+
+<% end %>
+</ul>

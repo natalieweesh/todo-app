@@ -1,0 +1,21 @@
+<h2>New Item</h2>
+
+<form action="<%= items_url %>" method="post">
+  
+  <input type="hidden" name="item[project_id]" value="<%= @project_id %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Title
+    <input type="text" name="item[title]">
+  </label>
+  <br>
+  <label>Description
+    <input type="text" name="item[description]">
+  </label>
+  <br>
+  <label>Status
+    <input type="radio" name="item[completed]" value="true">Completed</input>
+    <input type="radio" name="item[completed]" value="false">Incomplete</input>
+  </label>
+  <br>
+  <input type="submit" value="Go">
+</form>

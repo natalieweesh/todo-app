@@ -1,0 +1,32 @@
+<h2>Edit Item</h2>
+
+<form action="<%= item_url(@item.id) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <input type="hidden" name="_method" value="put">
+  
+  <label>Title
+    <input type="text" name="item[title]" value="<%= @item.title %>">
+  </label>
+  <br>
+  <label>Description
+    <input type="text" name="item[description]" value="<%= @item.description %>">
+  </label>
+  <br>
+  <input type="text" name="item[completed]" value="<%= @item.completed %>">
+  <br>
+  <label>Status
+    <br>
+    <label>Completed
+      <input type="radio" name="item[completed]" value="true" <%= 'checked = "checked"' if @item.completed == true %>> 
+    </label>
+    <br>
+    <label>Incomplete
+      <input type="radio" name="item[completed]" value="false" <%= 'checked = "checked"' if @item.completed == false %>>
+    </label>
+  </label>
+  <br>
+  <input type="submit" value="Go">
+
+  
+</form>

@@ -1,0 +1,7 @@
+<h2>Item: <%= @item.title %></h2>
+
+<p>Description: <%= @item.description %></p>
+
+<p>Status: <%= @item.completed ? "Completed" : "Incomplete" %></p>
+
+<p>Project: <%= link_to @item.project.title, project_url(@item.project_id) %></p>

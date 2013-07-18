@@ -1,0 +1,19 @@
+<h2>New User</h2>
+
+<form action="<%= users_url %>" method="post">
+  <label>Name
+    <input type="text" name="user[name]">
+  </label>
+  
+  <br>
+  Add user to teams:
+  <% Team.all.each do |team| %>
+  <label>
+  <input type="checkbox" name="user[team_ids][]" value="<%= team.id %>">
+  <%= team.name %>
+  </label>
+    
+  <% end %>
+  
+  <input type="submit" value="Go">
+</form>
