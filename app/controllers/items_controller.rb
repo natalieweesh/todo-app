@@ -35,5 +35,17 @@ class ItemsController < ApplicationController
     @project_id = params[:project_id]
     @items = Item.where('project_id = ?', @project_id)
   end
+  
+  def batch_update
+    hash = params[:items]
+    hash.each do |index, completed|
+      torf = completed["completed"].to_sym
+      @item = Item.find(index.to_i)
+      torf == :true ? @item.update_attributes(completed: true) : @item.update_attributes(completed: false)
+      @project_id = @item.project_id
+    end
+    redirect_to project_url(@project_id)
+  end
 
 end
+

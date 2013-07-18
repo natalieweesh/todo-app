@@ -1,4 +1,5 @@
 TodoApp::Application.routes.draw do
+  put 'items/batch_update' => 'items#batch_update'
 
   resources :projects do
     resources :items, only: [:index, :new]

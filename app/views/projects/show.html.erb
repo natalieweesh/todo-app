@@ -2,6 +2,9 @@
 
 <p>Description: <%= @project.description %></p>
 
+
+<form action="<%= items_batch_update_url %>" method="post">
+  <input type="hidden" name="_method" value="put">
 <h4>Items:</h4>
 
 <% if @items %>
@@ -13,6 +16,8 @@
     <li><%= link_to item.title, item_url(item.id) %></li>
     <li><%= item.description %></li>
     <li><%= item.completed ? "Completed" : "Incomplete" %></li>
+    <input type="hidden" name="<%= "items[#{item.id}][completed]" %>" value="false">
+    <li><%= check_box_tag "items[#{item.id}][completed]", "true", item.completed ? true : false %></li>
   </ul>
   </li>
   <% end %>
@@ -20,3 +25,8 @@
 <% else %>
   No items yet
 <% end %>
+
+
+<input type="submit" value="Go">
+
+</form>
